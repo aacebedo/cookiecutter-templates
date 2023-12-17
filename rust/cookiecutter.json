@@ -1,5 +1,12 @@
 {
-	"project_name": "Cookiecutter Website Simple",
-	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-	"author": "Anonymous"
+  "name": "Rust project",
+  "slug": "{{cookiecutter.name.lower().replace(' ', '_')}}",
+  "author": "Alexandre Acebedo",
+  "email": "alexandre@acebedo.fr",
+  "devbox": {
+    "init_hooks": [],
+    "dependencies": {}
+  },
+  "cargo_dependencies": {},
+  "version": "0.0.1"
 }

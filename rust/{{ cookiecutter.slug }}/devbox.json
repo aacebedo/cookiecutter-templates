@@ -1,0 +1,21 @@
+{
+  "packages": {
+    "cargo":"latest",
+    "rustfmt":"latest",
+    "rustc":"latest",
+    "pkg-config":"latest"
+    {%- for dep_name, dep in cookiecutter.devbox.dependencies|dictsort -%}
+    {{"," if loop.first}}
+    "{{ dep_name }}": "{{ dep }}"{{"," if not loop.last}}
+    {%- endfor %}
+  },
+  "shell": {
+    "init_hook": [
+      "export PKG_CONFIG_PATH=`pwd`/.devbox/nix/profile/default/lib/pkgconfig/"
+      {%- for hook in cookiecutter.devbox.init_hooks -%}
+      {{"," if loop.first}}
+      "{{ hook }}"{{"," if not loop.last}}
+      {%- endfor %}
+    ]
+  }
+}

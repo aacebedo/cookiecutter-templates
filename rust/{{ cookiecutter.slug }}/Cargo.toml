@@ -1,0 +1,18 @@
+[package]
+name = "{{ cookiecutter.slug }}"
+version = "{{ cookiecutter.version }}"
+edition = "2021"
+
+{% for dep_name, dep in cookiecutter.cargo_dependencies|dictsort -%}
+{{"[dependencies]" if loop.first}}
+{{ dep_name }} ={{  ' ' }}
+{%- if dep is string -%}
+"{{ dep }}"
+{%- else -%}
+{{ '{ ' }}
+{%- for prop, value in dep.items() -%}
+{{ prop }} = "{{ value }}"{{", " if not loop.last}}
+{%- endfor -%}
+{{ ' }' }}
+{%- endif -%}
+{%- endfor -%}
